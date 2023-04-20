@@ -231,6 +231,8 @@ namespace SysBot.Pokemon.Twitch
             switch (c)
             {
                 // User Usable Commands
+                case "discord":
+                    return "https://discord.gg/yWveAjKbKt";
                 case "trade":
                 case CommandAddition + "trade":
                 case "trade" + CommandAddition:
