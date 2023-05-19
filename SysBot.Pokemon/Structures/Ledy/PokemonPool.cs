@@ -155,6 +155,8 @@ namespace SysBot.Pokemon
             // Surprise Trade currently bans Mythicals and Legendaries, not Sub-Legendaries.
             if (SpeciesCategory.IsLegendary(pk.Species))
                 return true;
+            if (SpeciesCategory.IsMythical(pk.Species))
+                return true;
 
             // Can't surprise trade fused stuff.
             if (FormInfo.IsFusedForm(pk.Species, pk.Form, pk.Format))

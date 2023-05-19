@@ -90,6 +90,8 @@ namespace SysBot.Pokemon
                     return false;
                 if (SpeciesCategory.IsMythical(poke.Species))
                     return false;
+                if (SpeciesCategory.IsSubLegendary(poke.Species))
+                    return false;
 
                 return true;
             }
