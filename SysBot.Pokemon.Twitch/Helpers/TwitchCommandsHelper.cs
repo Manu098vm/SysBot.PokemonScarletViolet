@@ -1,9 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using PKHeX.Core;
-using PKHeX.Core.AutoMod;
 using SysBot.Base;
 
 namespace SysBot.Pokemon.Twitch
@@ -59,13 +55,13 @@ namespace SysBot.Pokemon.Twitch
 
                 if (pkm == null)
                 {
-                    msg = $"Skipping trade, @{username}: Unable to legalize the Pokémon.";
+                    msg = $"Skipping trade, @{username}: Unable to legalize the Pokemon.";
                     return false;
                 }
 
                 if (!pkm.CanBeTraded())
                 {
-                    msg = $"Skipping trade, @{username}: Provided Pokémon content is blocked from trading!";
+                    msg = $"Skipping trade, @{username}: Provided Pokemon content is blocked from trading!";
                     return false;
                 }
 
@@ -78,12 +74,12 @@ namespace SysBot.Pokemon.Twitch
                         var tq = new TwitchQueue<T>(pk, new PokeTradeTrainerInfo(display, mUserId), username, sub);
                         TwitchBot<T>.QueuePool.RemoveAll(z => z.UserName == username); // remove old requests if any
                         TwitchBot<T>.QueuePool.Add(tq);
-                        msg = $"NICE! @{username} - added to the waiting list. Please whisper your 8-digit trade code to me! (whisper this bot, not the streamer) {msgAddParams}";
+                        msg = $"@{username} - added to the waiting list :-) Please whisper your 8-digit trade code to me! (whisper this bot, not the streamer) {msgAddParams}";
                         return true;
                     }
                 }
 
-                var reason = result == "Timeout" ? "Set took too long to generate." : "Unable to legalize the Pokémon.";
+                var reason = result == "Timeout" ? "Set took too long to generate." : "Unable to legalize the Pokemon.";
                 msg = $"Skipping trade, @{username}: {reason}";
             }
 

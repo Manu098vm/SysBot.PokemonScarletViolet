@@ -227,14 +227,14 @@ namespace SysBot.Pokemon.Twitch
 
             if (args.StartsWith("<") && args.EndsWith(">"))
                 args = args[1..^1];
-
+            
             switch (c)
             {
                 // User Usable Commands
                 case "donate":
-                    return "https://ko-fi.com/manuelink98";
+                    return "Here's the donation link! Thank you for your support :3 https://ko-fi.com/manuelink98";
                 case "discord":
-                    return "https://discord.gg/yWveAjKbKt";
+                    return "Here's the Discord Server Link, have a nice stay :3 https://discord.gg/yWveAjKbKt";
                 case "trade":
                 case CommandAddition + "trade":
                 case "trade" + CommandAddition:
@@ -326,9 +326,7 @@ namespace SysBot.Pokemon.Twitch
                 AddToTradeQueue(user.Pokemon, code, e, sig, PokeRoutineType.LinkTrade, len, out string message);
                 client.SendMessage(Channel, message);
             }
-
             catch (Exception ex)
-
             {
                 LogUtil.LogSafe(ex, nameof(TwitchBot<T>));
                 LogUtil.LogError($"{ex.Message}", nameof(TwitchBot<T>));
