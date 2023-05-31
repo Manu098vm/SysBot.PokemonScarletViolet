@@ -1,5 +1,4 @@
 ﻿using PKHeX.Core;
-using PKHeX.Core.AutoMod;
 using SysBot.Base;
 using System;
 using System.Collections.Generic;
@@ -232,9 +231,9 @@ namespace SysBot.Pokemon.Twitch
             {
                 // User Usable Commands
                 case "donate":
-                    return "Here's the donation link! Thank you for your support :3 https://ko-fi.com/manuelink98";
+                    return $"Here's the donation link! Thank you for your support :3 {Settings.DonationLink}";
                 case "discord":
-                    return "Here's the Discord Server Link, have a nice stay :3 https://discord.gg/yWveAjKbKt";
+                    return $"Here's the Discord Server Link, have a nice stay :3 {Settings.DiscordLink}";
                 case "trade":
                 case CommandAddition + "trade":
                 case "trade" + CommandAddition:
