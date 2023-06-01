@@ -19,7 +19,7 @@ namespace SysBot.Pokemon.Twitch
 
             if (string.IsNullOrWhiteSpace(setstring))
             {
-                msg = $"@{username}: You need to request something! Include the Pokémon name in your command.";
+                msg = $"@{username}: You need to request something! Include the Pokemon name in your command.";
                 return false;
             }
 

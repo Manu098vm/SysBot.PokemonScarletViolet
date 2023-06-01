@@ -201,7 +201,8 @@ namespace SysBot.Pokemon.Twitch
                 return;
 
             var channel = e.Command.ChatMessage.Channel;
-            client.SendMessage(channel, $"|{MessagePrefix}| " + response);
+            //client.SendMessage(channel, $"|{MessagePrefix}| " + response);
+            client.SendMessage(channel, response);
         }
 
         private void Client_OnWhisperCommandReceived(object? sender, OnWhisperCommandReceivedArgs e)
@@ -231,14 +232,16 @@ namespace SysBot.Pokemon.Twitch
             {
                 // User Usable Commands
                 case "donate":
-                    return $"Here's the donation link! Thank you for your support :3 {Settings.DonationLink}";
+                    return  Settings.DonationLink.Length > 0 ? $"Here's the donation link! Thank you for your support :3 {Settings.DonationLink}" : string.Empty;
                 case "discord":
-                    return $"Here's the Discord Server Link, have a nice stay :3 {Settings.DiscordLink}";
+                    return Settings.DiscordLink.Length > 0 ? $"Here's the Discord Server Link, have a nice stay :3 {Settings.DiscordLink}" : string.Empty;
                 case "trade":
                 case CommandAddition + "trade":
                 case "trade" + CommandAddition:
                     HandleUsage(ulong.Parse(m.UserId));
                     _ = TwitchCommandsHelper<T>.AddToWaitingList(args, m.DisplayName, m.Username, ulong.Parse(m.UserId), subscriber(), out string msg);
+                    if (msg.Contains("Please read what you are supposed to type") && Settings.TutorialLink.Length > 0)
+                        msg += $"\nUsage Tutorial: {Settings.TutorialLink}";
                     return msg;
                 case "ts":
                 case "queue":
