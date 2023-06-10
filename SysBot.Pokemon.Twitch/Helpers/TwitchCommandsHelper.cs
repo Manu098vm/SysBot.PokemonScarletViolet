@@ -69,8 +69,7 @@ namespace SysBot.Pokemon.Twitch
                 {
                     var la = new LegalityAnalysis(pkm);
                     var valid = la.Valid;
-                    var isSpecial = (Species)pkm.Species is (Species.Urshifu or Species.Diancie or Species.Magearna);
-                    if (valid || (isSpecial && !pk.IsShiny))
+                    if (valid)
                     {
                         var tq = new TwitchQueue<T>(pk, new PokeTradeTrainerInfo(display, mUserId), username, sub);
                         TwitchBot<T>.QueuePool.RemoveAll(z => z.UserName == username); // remove old requests if any

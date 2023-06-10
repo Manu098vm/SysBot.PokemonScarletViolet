@@ -67,8 +67,7 @@ namespace SysBot.Pokemon.Discord
                 var spec = GameInfo.Strings.Species[template.Species];
                 pkm = EntityConverter.ConvertToType(pkm, typeof(T), out _) ?? pkm;
 
-                var isSpecial = (Species)pkm.Species is (Species.Urshifu or Species.Diancie or Species.Magearna);
-                if (pkm is not T pk || (!la.Valid && !isSpecial) || (isSpecial && pk.IsShiny))
+                if (pkm is not T pk || !la.Valid)
                 {
                     var reason = result == "Timeout" ? $"That {spec} set took too long to generate." : $"I wasn't able to create a {spec} from that set.";
                     var imsg = $"Oops! {reason}";
@@ -243,8 +242,7 @@ namespace SysBot.Pokemon.Discord
             }
 
             var la = new LegalityAnalysis(pk);
-            var isSpecial = (Species)pk.Species is (Species.Urshifu or Species.Diancie or Species.Magearna);
-            if ((!la.Valid && !isSpecial) || (isSpecial && pk.IsShiny))
+            if (!la.Valid)
             {
                 await ReplyAsync($"{typeof(T).Name} attachment is not legal, and cannot be traded!").ConfigureAwait(false);
                 return;
